@@ -1,0 +1,26 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    springFrameworkVersion = '3.2.9.RELEASE'
+    javaVersion = '1.7'
+}
+
+
+sourceCompatibility = javaVersion
+targetCompatibility = javaVersion
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.5'
+    compile "org.springframework:spring-context:${springFrameworkVersion}"
+    compile "org.springframework:spring-jdbc:${springFrameworkVersion}"
+    compile "org.springframework:spring-tx:${springFrameworkVersion}"
+    compile "org.springframework:spring-context-support:${springFrameworkVersion}"
+    compile 'org.springframework.data:spring-data-commons:1.8.1.RELEASE'
+    compile 'com.h2database:h2:1.4.179'
+    compile 'commons-dbcp:commons-dbcp:1.4'
+    testCompile 'junit:junit:4.11'
+}
