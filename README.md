@@ -9,6 +9,7 @@ Spring data commons 에 추가된 [ChainedTransactionManager](http://docs.spring
 * ChainedTransactionManagerTester 에서 firstDataSource에 대한 요청을 날리고, 응답을 10초간 지연시키는 쓰레드를 5개(firstDataSource의 최대 커넥션 갯수만큼) 만든다.
 * 쓰레드를 실행한 직후의 커넥션 갯수를 찍고 곧바로 secondDataSource 를 호출하는 쿼리를 날린다.
 * 추후 ApplicationcContextConfig.java에서 [LazyConnectionDataSourceProxy](http://docs.spring.io/spring/docs/3.2.9.RELEASE/javadoc-api/org/springframework/jdbc/datasource/LazyConnectionDataSourceProxy.html) 사용하도록 각 DataSource를 감싸서 다시 테스트를 진행한다.
+* [ChainedTransactionManagerTester](https://github.com/kwon37xi/ChainedTransactionManagerTest/blob/master/src/main/java/kr/pe/kwonnam/ctmtest/ChainedTransactionManagerTester.java)를 실행한다.
 
 ## 결과 LazyConnectionDataSourceProxy 사용 안 할 때
     First datetime : 2020-12-32 12:30:12.691
