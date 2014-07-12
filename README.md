@@ -2,6 +2,8 @@
 
 Spring data commons 에 추가된 [ChainedTransactionManager](http://docs.spring.io/spring-data/commons/docs/1.6.2.RELEASE/api/org/springframework/data/transaction/ChainedTransactionManager.html)에 관한 테스트를 해본다.
 
+관련 블로그 글 : [Spring ChainedTransactionManager 어떻게 사용해야 하나?](http://kwon37xi.egloos.com/4886947)
+
 ## 테스트 조건
 * firstDataSource는 최대 커넥션 갯수를 __5개__로 제한한다.
 * secondDataSource는 최대 커넥션 갯수를 __10개__로 제한한다.
