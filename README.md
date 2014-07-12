@@ -38,4 +38,5 @@ Spring data commons 에 추가된 [ChainedTransactionManager](http://docs.spring
 ## 결론
 [ChainedTransactionManager](http://docs.spring.io/spring-data/commons/docs/1.6.2.RELEASE/api/org/springframework/data/transaction/ChainedTransactionManager.html)를
 사용할 때는 __함께 묶인 데이터 소스의 최대 커넥션 갯수를 동일__하게 맞춰야 한다.
+
 또한 가능하면 [LazyConnectionDataSourceProxy](http://docs.spring.io/spring/docs/3.2.9.RELEASE/javadoc-api/org/springframework/jdbc/datasource/LazyConnectionDataSourceProxy.html) 를 사용하여 실제로는 사용되지도 않으면서 트랜잭션 시작시 확보되는 커넥션 갯수를 줄여주는 것이 좋다.
