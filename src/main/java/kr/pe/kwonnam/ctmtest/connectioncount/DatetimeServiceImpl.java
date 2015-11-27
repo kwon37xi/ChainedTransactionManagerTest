@@ -1,8 +1,8 @@
-package kr.pe.kwonnam.ctmtest;
+package kr.pe.kwonnam.ctmtest.connectioncount;
 
 import org.springframework.transaction.annotation.Transactional;
 
-@Transactional
+@Transactional(value = "doubleChainedTransactionManager")
 public class DatetimeServiceImpl implements  DatetimeService {
 
     private DatetimeDao firstDatetimeDao;
@@ -14,6 +14,7 @@ public class DatetimeServiceImpl implements  DatetimeService {
     }
 
     @Override
+    @Transactional(value = "doubleChainedTransactionManager")
     public void getDatetimeFromFirst() {
         System.out.println("First datetime : " + firstDatetimeDao.getDatetime());
         try {
@@ -24,6 +25,7 @@ public class DatetimeServiceImpl implements  DatetimeService {
     }
 
     @Override
+    @Transactional(value = "doubleChainedTransactionManager")
     public void getDatetimeFromSecond() {
         System.out.println("Second datetime : " + secondDatetimeDao.getDatetime());
     }

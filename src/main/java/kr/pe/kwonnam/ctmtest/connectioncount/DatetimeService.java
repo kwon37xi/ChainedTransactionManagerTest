@@ -1,4 +1,4 @@
-package kr.pe.kwonnam.ctmtest;
+package kr.pe.kwonnam.ctmtest.connectioncount;
 
 import java.util.Date;
 

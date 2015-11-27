@@ -1,4 +1,4 @@
-package kr.pe.kwonnam.ctmtest;
+package kr.pe.kwonnam.ctmtest.connectioncount;
 
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 

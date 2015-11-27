@@ -14,7 +14,9 @@ sourceCompatibility = javaVersion
 targetCompatibility = javaVersion
 
 dependencies {
-    compile 'org.slf4j:slf4j-api:1.7.5'
+    compile 'org.slf4j:slf4j-api:1.7.13'
+    compile 'org.slf4j:slf4j-simple:1.7.13'
+
     compile "org.springframework:spring-context:${springFrameworkVersion}"
     compile "org.springframework:spring-jdbc:${springFrameworkVersion}"
     compile "org.springframework:spring-tx:${springFrameworkVersion}"
