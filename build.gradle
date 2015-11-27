@@ -5,7 +5,7 @@ repositories {
 }
 
 ext {
-    springFrameworkVersion = '3.2.9.RELEASE'
+    springFrameworkVersion = '3.2.15.RELEASE'
     javaVersion = '1.7'
 }
 
