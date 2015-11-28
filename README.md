@@ -55,6 +55,7 @@ Spring data commons 에 추가된 [ChainedTransactionManager](http://docs.spring
 * `firstTransactionManager`, `secondTransactionManager`, `thirdTransactionManager` 는 각각의 독립된 `DataSource`를 바라보게 설정한다.
 * `doubleChainedTransactionManager`는 `first/secondTransactionManager`를 chain 한다.
 * `tripleChainedTransactionManager`는 `first/second/thirdTransactionManager`를 chain 한다.
+* [ChainedTransactionManagerCrossTransactionTester](https://github.com/kwon37xi/ChainedTransactionManagerTest/blob/master/src/main/java/kr/pe/kwonnam/ctmtest/crosstransaction/ChainedTransactionManagerCrossTransactionTester.java)를 실행한다.
 
 ### 테스트 실행 결과
 * `propagation=NEVER`(트랜잭션없음)로 트랜잭션이 걸린 상위 메소드에서 `first/secondTransactionManager`가 걸린 insert 수행 dao 메소드를 호출하고, 그 뒤에 예외를 발생시킨다.
