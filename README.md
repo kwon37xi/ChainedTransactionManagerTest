@@ -59,11 +59,11 @@ Spring data commons 에 추가된 [ChainedTransactionManager](http://docs.spring
 
 ### 테스트 실행 결과
 * `propagation=NEVER`(트랜잭션없음)로 트랜잭션이 걸린 상위 메소드에서 `first/secondTransactionManager`가 걸린 insert 수행 dao 메소드를 호출하고, 그 뒤에 예외를 발생시킨다.
-** insert 된 데이터가 롤백되지 않는다. -> 당연하거지.
+  * insert 된 데이터가 롤백되지 않는다. -> 당연하거지.
 * `doubleChainedTransactionManager`로 트랜잭션이 걸린 상위 메소드에서 `first/secondTransactionManager`가 걸린 insert 수행 dao 메소드를 호출하고, 그 뒤에 예외를 발생시킨다.
-** insert 된 데이터가 롤백된다. chained와 독립 트랜잭션 매니저는 동기화된 상태이다.
+  * insert 된 데이터가 롤백된다. chained와 독립 트랜잭션 매니저는 동기화된 상태이다.
 * `tripleChainedTransactionManager`로 트랜잭션이 걸린 상위 메소드에서 `doubleChainedTransactionManager`가 걸린 insert 수행 dao 메소드를 호출하고, 그 뒤에 예외를 발생시킨다.
-** insert 된 데이터가 롤백된다. chained와 그보다 작은 범위로 chained인 트랜잭션 매니저는 동기화된 상태이다.
+  * insert 된 데이터가 롤백된다. chained와 그보다 작은 범위로 chained인 트랜잭션 매니저는 동기화된 상태이다.
 
 ### 결론
-* ChainedTransactionManager로 트랜잭션이 시작되면 그 내부에서 Chained 된 범위내의 다른 트랜잭션 매니저가 시작되어도 상위의 트랜잭션 매니저로 트랜잭션이 동기화되어 있다.
+* **`ChainedTransactionManager`로 트랜잭션이 시작되면 그 내부에서 Chained 된 범위내의 다른 트랜잭션 매니저가 시작되어도 상위의 트랜잭션 매니저로 트랜잭션이 동기화**되어 있다.
