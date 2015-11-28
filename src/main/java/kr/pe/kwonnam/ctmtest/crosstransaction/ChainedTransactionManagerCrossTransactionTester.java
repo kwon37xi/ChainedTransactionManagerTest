@@ -23,6 +23,12 @@ public class ChainedTransactionManagerCrossTransactionTester {
     private static final Logger log = getLogger(ChainedTransactionManagerCrossTransactionTester.class);
 
     public static void main(String[] args) {
+        boolean assertEnabled = false;
+        assert assertEnabled = true;
+        if (!assertEnabled) {
+            throw new IllegalStateException("Enable assert with -ea VM option.");
+        }
+
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(ApplicationContextConfig.class, CrossTransactionContextConfig.class);
 
         CrossTransactionService crossTransactionService = applicationContext.getBean(CrossTransactionService.class);
@@ -48,8 +54,8 @@ public class ChainedTransactionManagerCrossTransactionTester {
 
         List<Map<String, Object>> people = personForSecondDao.findAll();
         log.info("people after noTransactionWithException() : {}", books);
-        assert books.size() == 1;
-        assert people.size() == 1;
+        assert books.size() == 1 : "no transaction -> first/second transaction manager 이므로 상위에서 발생한 예외에 무관하게 데이터는 커밋돼야 한다.";
+        assert people.size() == 1 : "no transaction -> first/second transaction manager 이므로 상위에서 발생한 예외에 무관하게 데이터는 커밋돼야 한다.";
     }
 
     private static void crossWithSpecificTransactionManagerTest(CrossTransactionService crossTransactionService, BookForFirstDao bookForFirstDao, PersonForSecondDao personForSecondDao) {
@@ -65,8 +71,8 @@ public class ChainedTransactionManagerCrossTransactionTester {
 
         List<Map<String, Object>> people = personForSecondDao.findAll();
         log.info("people after crossTransactionWithException() : {}", books);
-        assert books.size() == 1;
-        assert people.size() == 1;
+        assert books.size() == 1 : "double -> first/second transaction manager가 묶인 상태에서 예외가 발생하였으므로 first/second에서 저장한 것은 롤백돼야 한다.";
+        assert people.size() == 1 : "double -> first/second transaction manager가 묶인 상태에서 예외가 발생하였으므로 first/second에서 저장한 것은 롤백돼야 한다.";
     }
 
     private static void crossWithSubChainedTransactionManagerTest(CrossTransactionService crossTransactionService, BookForFirstDao bookForFirstDao, PersonForSecondDao personForSecondDao) {
@@ -78,11 +84,11 @@ public class ChainedTransactionManagerCrossTransactionTester {
         }
 
         List<Map<String, Object>> books = bookForFirstDao.findAll();
-        log.info("books after crossTransactionWithException() : {}", books);
+        log.info("books after crossWithSubChainedTransactionManagerException() : {}", books);
 
         List<Map<String, Object>> people = personForSecondDao.findAll();
-        log.info("people after crossTransactionWithException() : {}", people);
-        assert books.size() == 1;
-        assert people.size() == 1;
+        log.info("people after crossWithSubChainedTransactionManagerException() : {}", people);
+        assert books.size() == 1 : "triple -> double transaction 매니저가 묶인 상태에서 예외가 발생하였으므로 double에서 저장한 것은 롤백돼야 한다.";
+        assert people.size() == 1 : "triple -> double transaction 매니저가 묶인 상태에서 예외가 발생하였으므로 double에서 저장한 것은 롤백돼야 한다.";
     }
 }
