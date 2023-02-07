@@ -1,5 +1,7 @@
 # Spring ChainedTransactionManager Test
 
+**ChainedTransactionManager 는 Spring Data 2.5 부터 Deprecated 되었다. 사용하지 말 것.**
+
 Spring data commons 에 추가된 [ChainedTransactionManager](http://docs.spring.io/spring-data/commons/docs/1.6.2.RELEASE/api/org/springframework/data/transaction/ChainedTransactionManager.html)에 관한 테스트를 해본다.
 
 관련 블로그 글 : [Spring ChainedTransactionManager 어떻게 사용해야 하나?](http://kwon37xi.egloos.com/4886947)
